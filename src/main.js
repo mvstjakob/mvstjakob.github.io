@@ -35,6 +35,9 @@ gsap.from('.hero-cta', {
 // ---------------------------------------------------------------------------
 const mm = gsap.matchMedia()
 
+// Stores active ScrollTrigger instances keyed by section id, for nav scrolling
+const horizontalTriggers = {}
+
 /**
  * Sets up a pinned horizontal scroll animation for a section.
  * @param {string} sectionSelector - CSS selector for the outer section element.
@@ -66,8 +69,11 @@ function setupHorizontalSection(sectionSelector) {
       },
     })
 
+    if (section.id) horizontalTriggers[section.id] = tween.scrollTrigger
+
     // Return cleanup function for matchMedia
     return () => {
+      if (section.id) delete horizontalTriggers[section.id]
       tween.scrollTrigger?.kill()
       tween.kill()
       gsap.set(wrapper, { x: 0 })
@@ -78,6 +84,20 @@ function setupHorizontalSection(sectionSelector) {
 setupHorizontalSection('.horizontal-section.insta')
 setupHorizontalSection('.horizontal-section.team')
 setupHorizontalSection('.horizontal-section.history')
+
+// ---------------------------------------------------------------------------
+// 2b. Anchor nav — scroll to start of pinned sections on desktop
+// ---------------------------------------------------------------------------
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const id = link.getAttribute('href').slice(1)
+    const st = horizontalTriggers[id]
+    if (st) {
+      e.preventDefault()
+      window.scrollTo({ top: st.start, behavior: 'smooth' })
+    }
+  })
+})
 
 // ---------------------------------------------------------------------------
 // 3. Vertical reveal animations
