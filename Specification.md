@@ -127,13 +127,13 @@ If real Instagram API integration is added later, it must not block rendering.
 
 Content:
 
-* Address
+2 cards with contact details for two representatives (equal):
+* Photo
+* Name
 * Email
 * Phone
-* Optional embedded map (static iframe only)
 
 Layout:
-
 * Responsive 1 column (mobile)
 * 2 column (desktop)
 
