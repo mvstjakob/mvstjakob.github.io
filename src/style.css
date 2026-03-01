@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* Horizontal scroll wrapper */
+.horizontal-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.panel {
+  flex-shrink: 0;
+  width: 100vw;
+}
+
+/* Mobile: stack panels vertically */
+@media (max-width: 767px) {
+  .horizontal-wrapper {
+    flex-wrap: wrap;
+  }
+  .panel {
+    width: 100%;
+  }
+}

@@ -1,0 +1,138 @@
+import './style.css'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+// ---------------------------------------------------------------------------
+// 1. Welcome section — fade-in headline on load
+// ---------------------------------------------------------------------------
+gsap.from('.hero-headline', {
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  ease: 'power2.out',
+})
+
+gsap.from('.hero-sub', {
+  opacity: 0,
+  y: 30,
+  duration: 1,
+  delay: 0.3,
+  ease: 'power2.out',
+})
+
+gsap.from('.hero-cta', {
+  opacity: 0,
+  y: 20,
+  duration: 0.8,
+  delay: 0.6,
+  ease: 'power2.out',
+})
+
+// ---------------------------------------------------------------------------
+// 2. Horizontal scroll sections — desktop only
+// ---------------------------------------------------------------------------
+const mm = gsap.matchMedia()
+
+/**
+ * Sets up a pinned horizontal scroll animation for a section.
+ * @param {string} sectionSelector - CSS selector for the outer section element.
+ */
+function setupHorizontalSection(sectionSelector) {
+  const section = document.querySelector(sectionSelector)
+  if (!section) return
+
+  const wrapper = section.querySelector('.horizontal-wrapper')
+  if (!wrapper) return
+
+  mm.add('(min-width: 768px)', () => {
+    const totalWidth = wrapper.scrollWidth
+    const viewportWidth = window.innerWidth
+    const distance = totalWidth - viewportWidth
+
+    const tween = gsap.to(wrapper, {
+      x: -distance,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => `+=${distance}`,
+        pin: true,
+        scrub: true,
+        anticipatePin: 1,
+        markers: false,
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // Return cleanup function for matchMedia
+    return () => {
+      tween.scrollTrigger?.kill()
+      tween.kill()
+      gsap.set(wrapper, { x: 0 })
+    }
+  })
+}
+
+setupHorizontalSection('.horizontal-section.insta')
+setupHorizontalSection('.horizontal-section.team')
+setupHorizontalSection('.horizontal-section.history')
+
+// ---------------------------------------------------------------------------
+// 3. Vertical reveal animations
+// ---------------------------------------------------------------------------
+gsap.utils.toArray('.reveal').forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 80%',
+      toggleActions: 'play none none none',
+    },
+  })
+})
+
+// ---------------------------------------------------------------------------
+// 4. Header — gain background on scroll
+// ---------------------------------------------------------------------------
+const header = document.getElementById('site-header')
+
+if (header) {
+  ScrollTrigger.create({
+    start: 'top -80',
+    onEnter: () => header.classList.add('bg-white', 'shadow-md'),
+    onLeaveBack: () => header.classList.remove('bg-white', 'shadow-md'),
+  })
+}
+
+// ---------------------------------------------------------------------------
+// 5. Hamburger — toggle mobile nav
+// ---------------------------------------------------------------------------
+const hamburger = document.getElementById('hamburger')
+const mobileNav = document.getElementById('mobile-nav')
+
+if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = !mobileNav.classList.contains('hidden')
+
+    if (isOpen) {
+      mobileNav.classList.add('hidden')
+      hamburger.setAttribute('aria-expanded', 'false')
+    } else {
+      mobileNav.classList.remove('hidden')
+      hamburger.setAttribute('aria-expanded', 'true')
+    }
+  })
+
+  // Close mobile nav when a link is clicked
+  mobileNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.add('hidden')
+      hamburger.setAttribute('aria-expanded', 'false')
+    })
+  })
+}
