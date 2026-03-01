@@ -33,8 +33,7 @@ All sections must be in this exact order:
 
 1. **Header**
 2. **Welcome Section**
-3. **Instagram Feed Section**
-4. **Social Media Links**
+3. **Social Media Section**
 5. **Contact Section**
 6. **Team Section**
 7. **History Section**
@@ -117,24 +116,13 @@ This may use horizontal scroll behavior.
 * Use GSAP ScrollTrigger
 * Animate via `transform: translateX`
 * No autoplay behavior
+* include facebook, insta and youtube social links below the post carousel (but always visible)
 
 If real Instagram API integration is added later, it must not block rendering.
 
 ---
 
-### 4.4 Social Media Links
-
-Simple vertical section:
-
-* Icons (Instagram, Facebook, etc.)
-* Centered layout
-* Hover animations (scale + opacity)
-
-Reveal animation on scroll.
-
----
-
-### 4.5 Contact Section
+### 4.4 Contact Section
 
 Content:
 
@@ -152,7 +140,7 @@ Reveal animation on scroll.
 
 ---
 
-### 4.6 Team Section (Horizontal Scroll Required)
+### 4.5 Team Section (Horizontal Scroll Required)
 
 Must use pinned horizontal scroll.
 
@@ -183,7 +171,7 @@ Mobile:
 
 ---
 
-### 4.7 History Section (Horizontal Scroll Required)
+### 4.6 History Section (Horizontal Scroll Required)
 
 Same technical structure as Team section.
 
@@ -202,7 +190,7 @@ Mobile:
 
 ---
 
-### 4.8 Imprint Section
+### 4.7 Imprint Section
 
 Final static section:
 
