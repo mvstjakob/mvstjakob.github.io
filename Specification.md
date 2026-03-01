@@ -83,7 +83,7 @@ All sections must be in this exact order:
 
 ---
 
-### 4.3 Instagram Feed Section
+### 4.3 News Section
 
 This may use horizontal scroll behavior.
 
@@ -116,6 +116,7 @@ This may use horizontal scroll behavior.
 * Use GSAP ScrollTrigger
 * Animate via `transform: translateX`
 * No autoplay behavior
+* It should contain placeholders for the 3 most recent insta posts
 * include facebook, insta and youtube social links below the post carousel (but always visible)
 
 If real Instagram API integration is added later, it must not block rendering.
