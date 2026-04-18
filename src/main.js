@@ -31,6 +31,25 @@ gsap.from('.hero-cta', {
 })
 
 // ---------------------------------------------------------------------------
+// 1b. Welcome section — background slideshow
+// ---------------------------------------------------------------------------
+const slides = gsap.utils.toArray('.slider-slide')
+
+if (slides.length > 1) {
+  let current = 0
+
+  function nextSlide() {
+    const prev = current
+    current = (current + 1) % slides.length
+
+    gsap.to(slides[prev], { opacity: 0, duration: 1.2, ease: 'power2.inOut' })
+    gsap.to(slides[current], { opacity: 1, duration: 1.2, ease: 'power2.inOut' })
+  }
+
+  setInterval(nextSlide, 5000)
+}
+
+// ---------------------------------------------------------------------------
 // 2. Horizontal scroll sections — desktop only
 // ---------------------------------------------------------------------------
 const mm = gsap.matchMedia()

@@ -11,6 +11,17 @@
   width: 100vw;
 }
 
+/* Header transparent state — white text over dark hero */
+#site-header:not(.bg-white) nav a {
+  color: white;
+}
+#site-header:not(.bg-white) nav a:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+#site-header:not(.bg-white) #hamburger span {
+  background-color: white;
+}
+
 /* Mobile: stack panels vertically */
 @media (max-width: 767px) {
   .horizontal-wrapper {

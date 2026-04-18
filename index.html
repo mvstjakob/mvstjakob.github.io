@@ -46,7 +46,7 @@
       <!-- Mobile Nav -->
       <nav
         id="mobile-nav"
-        class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4"
+        class="hidden md:hidden border-t border-gray-100 px-6 py-4 flex flex-col gap-4"
         aria-label="Mobile navigation"
       >
         <a href="#welcome" class="text-sm font-medium text-gray-700 hover:text-gray-900">Home</a>
@@ -61,20 +61,29 @@
     <!-- 2. WELCOME SECTION -->
     <section
       id="welcome"
-      class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gray-50"
+      class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gray-800"
     >
-      <!-- Background placeholder -->
-      <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" aria-hidden="true"></div>
+      <!-- Background slideshow -->
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <img class="slider-slide absolute inset-0 w-full h-full object-cover" src="/src/media/slider_1.jpg" alt="" />
+        <img class="slider-slide absolute inset-0 w-full h-full object-cover opacity-0" src="/src/media/slider_2.jpg" alt="" />
+        <img class="slider-slide absolute inset-0 w-full h-full object-cover opacity-0" src="/src/media/slider_3.jpg" alt="" />
+        <img class="slider-slide absolute inset-0 w-full h-full object-cover opacity-0" src="/src/media/slider_4.jpg" alt="" />
+        <img class="slider-slide absolute inset-0 w-full h-full object-cover opacity-0" src="/src/media/slider_5.jpg" alt="" />
+        <img class="slider-slide absolute inset-0 w-full h-full object-cover opacity-0" src="/src/media/slider_6.jpg" alt="" />
+        <!-- Dark overlay for text readability -->
+        <div class="absolute inset-0 bg-black/45"></div>
+      </div>
 
-      <h1 class="hero-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 leading-tight">
+      <h1 class="hero-headline relative text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-tight">
         Herzlich Willkommen<br/>Musikverein St. Jakob im Walde
       </h1>
-      <p class="hero-sub mt-6 text-lg md:text-xl text-gray-600 max-w-xl">
+      <p class="hero-sub relative mt-6 text-lg md:text-xl text-white/80 max-w-xl">
         Musik und Tradition seit 1885.
       </p>
       <a
         href="#news"
-        class="hero-cta mt-10 inline-block px-8 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+        class="hero-cta relative mt-10 inline-block px-8 py-3 rounded-full bg-white text-gray-900 text-sm font-semibold hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
       >
         Mehr Entdecken
       </a>

@@ -73,6 +73,7 @@ All sections must be in this exact order:
 
 * Full-screen hero (`min-h-screen`)
 * Large background image
+  * background image should switch in an automated slideshow (images slider_1.jpg through slider_6.jpg)
 * Centered slogan text
 
 **Animation**
