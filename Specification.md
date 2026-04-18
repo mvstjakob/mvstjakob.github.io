@@ -295,6 +295,50 @@ The implementation is complete when:
 * No layout shifts
 * Production build outputs optimized static files
 
+## 11. Deployment
+
+For deployment we use a github workflow that should
+* use https://github.com/actions/checkout to checkout the repo
+* install the dependencies with `npm i` (setup npm or use runs-on to run on a suitable runner type)
+* run the build with `npm run build`
+* use https://github.com/actions/upload-pages-artifact to upload the contents of dist as page artifact
+* use https://github.com/actions/deploy-pages to deploy the page 
+* the workflow should only run on pushes to main
+
+sample workflow setup from ghe upload-pages-artifact action readme
+```yaml
+jobs:
+  # Build job
+  build:
+    # Specify runner +  build & upload the static files as an artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build static files
+        id: build
+        run: |
+          # <Not provided for brevity>
+          # At a minimum this step should build the static files of your site
+          # <Not provided for brevity>
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: build_outputs_folder/
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
 ---
 
 If you'd like next, I can provide:
