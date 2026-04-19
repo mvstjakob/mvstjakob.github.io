@@ -31,3 +31,13 @@
     width: 100%;
   }
 }
+
+/* History section: stack vertically below xl (1280px) */
+@media (max-width: 1279px) {
+  .horizontal-section.history .horizontal-wrapper {
+    flex-wrap: wrap;
+  }
+  .horizontal-section.history .panel {
+    width: 100%;
+  }
+}

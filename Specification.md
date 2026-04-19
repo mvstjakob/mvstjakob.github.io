@@ -189,8 +189,11 @@ Each panel:
 
 Scroll must feel like timeline storytelling.
 
-Mobile:
+Layout Desktop:
+* Text left, image right
+* limit image to fixed height and width (keep ratio)
 
+Layout starting 1280px:
 * Vertical stacked timeline
 
 ---

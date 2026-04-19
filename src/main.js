@@ -61,14 +61,14 @@ const horizontalTriggers = {}
  * Sets up a pinned horizontal scroll animation for a section.
  * @param {string} sectionSelector - CSS selector for the outer section element.
  */
-function setupHorizontalSection(sectionSelector) {
+function setupHorizontalSection(sectionSelector, mediaQuery = '(min-width: 768px)') {
   const section = document.querySelector(sectionSelector)
   if (!section) return
 
   const wrapper = section.querySelector('.horizontal-wrapper')
   if (!wrapper) return
 
-  mm.add('(min-width: 768px)', () => {
+  mm.add(mediaQuery, () => {
     const totalWidth = wrapper.scrollWidth
     const viewportWidth = window.innerWidth
     const distance = totalWidth - viewportWidth
@@ -102,7 +102,7 @@ function setupHorizontalSection(sectionSelector) {
 
 setupHorizontalSection('.horizontal-section.insta')
 setupHorizontalSection('.horizontal-section.team')
-setupHorizontalSection('.horizontal-section.history')
+setupHorizontalSection('.horizontal-section.history', '(min-width: 1280px)')
 
 // ---------------------------------------------------------------------------
 // 2b. Anchor nav — scroll to start of pinned sections on desktop
