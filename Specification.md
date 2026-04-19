@@ -134,6 +134,9 @@ Content:
 * Email
 * Phone
 
+Below the two cards add a link to extended contact info that
+opens https://blasmusik-verband.at/Hartberg/verein?vnr=ST-11-019 in a new tab.
+
 Layout:
 * Responsive 1 column (mobile)
 * 2 column (desktop)
