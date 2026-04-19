@@ -154,9 +154,9 @@ Structure identical to horizontal template:
 ```html
 <section class="horizontal-section team">
   <div class="horizontal-wrapper">
-    <div class="panel">Member 1</div>
-    <div class="panel">Member 2</div>
-    <div class="panel">Member 3</div>
+    <div class="panel">Team 1</div>
+    <div class="panel">Team 2</div>
+    <div class="panel">Team 3</div>
   </div>
 </section>
 ```
@@ -164,10 +164,8 @@ Structure identical to horizontal template:
 Each panel:
 
 * Full viewport width
-* Profile image
-* Name
-* Role
-* Short description
+* Profile image (all section should have a single image with same placing and same height (400px) and auto width)
+* List of names on that team
 
 Mobile:
 
